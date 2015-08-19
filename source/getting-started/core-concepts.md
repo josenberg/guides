@@ -1,58 +1,60 @@
-To get started with Ember.js, there are a few core concepts you
-should understand.
+Para começar com Ember.js, existem alguns conceitos chave que você precisa entender;
 
-## Templates
+## Templates (Moldes)
 
-Templates, written in the Handlebars language, describe the user interface of
-your application. In addition to plain HTML, templates can contain expressions,
-like `{{title}}` or `{{author}}`, which take information from a component or
-controller and put it into HTML. They can also contain helpers, like
-`{{#if isAdmin}}30 people have viewed your blog today.{{/if}}.` Finally, they can
-contain components, such as if a template listing out all the blog posts in an
-app rendered a component for each post.
+Templates, eles são escritos na linguagem "Handlebars", descrevem a user interface da 
+sua aplicação. 
+your application. Além de simples HTML, templates podem conter expressões,
+como `{{title}}` ou `{{author}}`, que leva informações criadas pelo seu componente
+ou controle e colocam no HTML. Essas expressões tambem podem ser helpers como
+`{{#if isAdmin}}30 people have viewed your blog today.{{/if}}`. E elas tambem 
+podem ser conter components, como se um template listasse todos os posts e um
+componente listasse cada um deles.
 
-## Components
+## Components (Componentes)
 
-Components are the primary way user interfaces are organized in Ember. They
-consist of two parts: a template, and a source file written in JavaScript that
-defines the component's behavior. For example, a blog application might have a
-component for displaying a list of blog posts called `all-posts`, and another
-component for displaying an individual post called `view-post`. If users can
-upvote a post, the `view-post` component might define a behavior like _when the
-user clicks the upvote button, increase the `vote` property's value by 1_.
+componentes são o jeito principal que a interface é organizada no ember. Eles
+consistem de duas partes: um template, e um arquivo escrito em JavaScript que 
+determina o comportamento desse componente. Por exemplo, um blog talvez tenha
+um componente para mostrar uma lista de post chamada `all-posts`, e outro 
+componente para renderizar cada post individualmente chamado `view-post`. Supondo
+que o usuario possa votar nos posts desse blog, o  `view-post` componente talvez 
+defina um comportamento do tipo _quando o usuario clicar no botão de votar, 
+incremente a propriedade 'votos' pelo valor 1_.
 
-## Controllers
+## Controllers (Controladores)
 
-Controllers are very much like components, so much so that in future versions of
-Ember, controllers will be replaced entirely with components. At the moment,
-components cannot be routed to (see below), but when this changes, it will be
-recommended to replace all controllers with components.
+Controllers são bem parecidos com componentes, tão parecidos que em futuras 
+versões do Ember, controllers serão totalmente substituidos por componentes. 
+Agora componentes não podem fazer parte do "routes" (veja abaixo), mas quando 
+mudar, será recomendado trocar todos os controllers por componentes.
 
-## Models
+## Models (Modelos)
 
-Models represent _persistent state_. For example, a blog application would want
-to save the content of a blog post when a user publishes it, and so the blog
-post would have a model defining it, perhaps called the `Post` model. A model
-typically persists information to a server, although models can be configured to
-save to anywhere else, such as the browser's Local Storage.
+Models representão _persistent state_. Por exemplo, um sistema de blog, ele 
+iria precisar salvar o conteudo de um post para ser publicado, então o essa 
+aplicação precisaria de um model definindo isso, ele provavelmente seria chamado
+de `Post` model, normalmente informações ficam guardadas em um servidor, porem 
+o model pode ser configurado para salvar em qualquer lugar, como no Local Storage
+do browser.
 
-## Routes
+## Routes (Rotas)
 
-Routes load a controller and a template. They can also load one or more models
-to provide data to the controller that can then be displayed by the template.
-For example, an `all-posts` route might load all the blog posts from the `Post`
-model, load the `all-posts` controller, and render the `all-posts` template.
-Similarly, a `view-post` route might load the model for the blog post to be
-shown, load the `view-post` controller, and render the `view-post` template.
+Routes são responsaveis por carregar seu controller e template. 
+Eles tambem podem ser responsaveis por gerenciar um ou mais models,
+por exemplo, uma route `all-posts` pode ser responsavel pelo `Posts` model,
+carregar o  `all-posts` controller e renderizar o `all-posts` template.
+Do mesmo jeito a rota `view-posts` pode ser responsavel pelo model que controla 
+qual post mostrar, carregar o `view-post` controller, e renderizar o `view-post` template.
 
 ## The Router
 
-The router maps a URL to a route. For example, when a user visits the `/posts`
-URL, the router might load the `all-posts` route. The router can also load
-nested routes. For example, if our blogging app had a list of blog posts on the
-left of the screen and then showed the current blog post on the right, we'd say
-that the `view-post` route was nested inside the `all-posts` route.
+The router mapeia a URL para as rotas. Por exemplo, quando um usuario visita a URL `/posts`
+O router talvez carregue a rota `all-posts`. O router tambem pode carregar 
+'rotas aninhadas' (nested routes). Por exemplo, se sua aplicação de blog tem uma lista de posts 
+no lado esquerdo da tela que mostra o proximo post à direita, nos podemos dizer que a rota do `view-post`
+esta aninhada com a do `all-posts`.
 
-Perhaps the most important thing to remember about Ember is that the URL drives
-the state of the application. The URL determines what route to load, which in
-turn determines what model, controller, and template to load.
+Talvez a parte mais importante para se lembrar sobre o Ember é que ele é
+a URL gerencia o estado da aplicação. A URL determina qual route carregar, 
+e assim a route se encarrega dos controllers, models e templates.
